@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
-	"github.com/Mussab2003/notes/auth_service/application"
+
+	"github.com/Mussab2003/go-notes-app-auth_service.git/application"
 )
 
 func main() {
