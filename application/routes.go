@@ -3,21 +3,20 @@ package application
 import (
 	"net/http"
 
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
+	"github.com/gin-gonic/gin"
 )
 
-func loadRoutes() *chi.Mux {
-	router := chi.NewRouter()
+func loadRoutes() *gin.Engine {
+	router := gin.New()
 
-	router.Use(middleware.Logger)
+	// Add middleware
+	router.Use(gin.Logger())
+	router.Use(gin.Recovery())
 
-	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
+	// Example route
+	router.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"message": "OK"})
 	})
-
 
 	return router
 }
-
-
